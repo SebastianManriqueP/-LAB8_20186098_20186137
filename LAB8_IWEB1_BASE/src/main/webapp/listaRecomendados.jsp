@@ -1,18 +1,19 @@
+
 <%@ page import="Beans.Cancion" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean type="java.util.ArrayList<Beans.Cancion>" scope="request" id="listaRecomendados"/>
+<jsp:useBean type="java.util.ArrayList<Beans.Cancion>" scope="request" id="listaCanciones"/>
 <html>
 <jsp:include page="/static/head.jsp">
-    <jsp:param name="title" value="Lista de Canciones"/>
+    <jsp:param name="title" value="Lista de Recomendados"/>
 </jsp:include>
 <body>
 <div class='container'>
     <jsp:include page="/includes/navbar.jsp">
-        <jsp:param name="page" value="canciones"/>
+        <jsp:param name="page" value="Recomendados"/>
     </jsp:include>
     <div class="pb-5 pt-4 px-3 titlecolor">
         <div class="col-lg-6">
-            <h1 class='text-light'>Lista de Canciones Recomendadas</h1>
+            <h1 class='text-light'>Lista de Canciones Recomendadas:</h1>
         </div>
     </div>
     <div class="tabla">
@@ -21,18 +22,20 @@
             <th>ID</th>
             <th>CANCION</th>
             <th>BANDA</th>
+            <th>Ver</th>
             </thead>
             <%
-                for (Cancion cancion : listaRecomendados) {
+                for (Cancion cancion : listaCanciones) {
             %>
             <tr>
                 <td><%=cancion.getIdCancion()%>
                 </td>
-                <td><%=cancion.nombreCancion()%>
+                <td><%=cancion.getNombreCancion()%>
                 </td>
-                <td><%=cancion.nombreBanda()%>
+                <td><%=cancion.getNombreBanda()%>
                 </td>
-
+                <td><button type="button" class="btn btn-success">Más de la banda</button>
+                </td>
             </tr>
             <%
                 }

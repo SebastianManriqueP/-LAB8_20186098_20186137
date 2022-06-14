@@ -23,14 +23,14 @@
                         <th>BANDA</th>
                     </thead>
                     <%
-                        for (Cancion cancion : listaCanciones) {
+                        for (Cancion cancion : listaCancion) {
                     %>
                     <tr>
                         <td><%=cancion.getIdCancion()%>
                         </td>
-                        <td><%=cancion.getNombre_cancion()%>
+                        <td><%=cancion.getNombreCancion()%>
                         </td>
-                        <td><%=cancion.getIdbanda()%>
+                        <td><%=cancion.getIdCancion()%>
                         </td>
 
                     </tr>

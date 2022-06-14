@@ -5,7 +5,7 @@ public class Cancion {
     private String nombreCancion;
     private String nombreBanda;
 
-    public Artista(int idCancion, String nombreCancion, String nombreBanda) {
+    public Cancion(int idCancion, String nombreCancion, String nombreBanda) {
         this.idCancion = idCancion;
         this.nombreCancion = nombreCancion;
         this.nombreBanda = nombreBanda;

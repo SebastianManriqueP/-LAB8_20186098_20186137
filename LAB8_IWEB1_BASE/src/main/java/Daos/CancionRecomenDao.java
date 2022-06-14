@@ -7,7 +7,7 @@ import java.sql.*;
 public class CancionRecomenDao {
     private static String user = "root";
     private static String pass = "root";
-    private static String url = "jdbc:mysql://localhost:3306/lab6sw1";
+    private static String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
 
     public ArrayList<Cancion> obtenerCancionesRecom() {
         ArrayList<Cancion> listaCancionR = new ArrayList<>();
@@ -23,7 +23,7 @@ public class CancionRecomenDao {
              ResultSet rs = stmt.executeQuery("SELECT C.idcancion, C.nombre_cancion, C.banda FROM reproduccion R, cancion C where C.idcancion = R.cancion_idcancion group by R.cancion_idcancion having count(*)>2 order by count(*) desc");) {
 
             while (rs.next()) {
-                Cancion cancion = new Cancion(rs.getInt(1),rs.getString(2),rs.getInt(3));
+                Cancion cancion = new Cancion(rs.getInt(1),rs.getString(2),rs.getString(3));
                 listaCancionR.add(cancion);
             }
         } catch (SQLException e) {
