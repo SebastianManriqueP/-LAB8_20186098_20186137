@@ -1,7 +1,7 @@
-<%@ page import="Beans.TourCiudad" %>
+<%@ page import="Beans.TPC" %>
 <%@ page import="Beans.Tour" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean type="java.util.ArrayList<Beans.TourCiudad>" scope="request" id="listaToursporCiudad"/>
+<jsp:useBean type="java.util.ArrayList<Beans.TPC>" scope="request" id="listaToursporCiudad"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="Lista de Tours por Ciudad"/>
@@ -25,14 +25,14 @@
                         <th>FECHA</th>
                     </thead>
                     <%
-                        for (TourCiudad tourCiudad : listaToursporCiudad) {
+                        for (TPC tpc : listaToursporCiudad) {
                     %>
                     <tr>
-                        <td><%=tourCiudad.getNombreTour()%>
+                        <td><%=tpc.getNombreTour()%>
                         </td>
-                        <td><%=tourCiudad.getCiudad()%>
+                        <td><%=tpc.getCiudad()%>
                         </td>
-                        <td><%=tourCiudad.getfecha()%>
+                        <td><%=tpc.getfecha()%>
                         </td>
 
                     </tr>
