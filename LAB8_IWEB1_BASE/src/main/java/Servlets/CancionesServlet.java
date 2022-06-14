@@ -18,7 +18,7 @@ public class TourServlet extends HttpServlet {
 
         request.setAttribute("listaRecomendados", cancionRecomenDao.obtenerCancionesRecom);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("listaTours.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("listaRecomendados.jsp");
         requestDispatcher.forward(request, response);
 
     }
