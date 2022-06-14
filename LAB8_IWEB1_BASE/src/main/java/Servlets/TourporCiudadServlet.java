@@ -1,6 +1,7 @@
 package Servlets;
 
 import Beans.Tour;
+import Beans.TPC;
 import Daos.TourDao;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "TourServlet",urlPatterns = {"/listaTours"})
+@WebServlet(name = "TourporCiudad Servlet",urlPatterns = {"/listaToursporciudad"})
 public class TourServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -20,11 +21,11 @@ public class TourServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TourDao tourDao = new TourDao();
-        ArrayList<Tour> listaTours = tourDao.obtenerListaTours();
+        ArrayList<TPC> listaToursporCiudad = tourDao.obtenerListaToursporciudad();
 
-        request.setAttribute("listaTours",listaTours);
+        request.setAttribute("listaToursporciudad",listaToursporCiudad);
 
-        RequestDispatcher view =request.getRequestDispatcher("listaTours.jsp");
+        RequestDispatcher view =request.getRequestDispatcher("listaToursporciudad.jsp");
         view.forward(request,response);
     }
 }
