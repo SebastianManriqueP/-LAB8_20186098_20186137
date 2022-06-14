@@ -14,14 +14,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(name = "TourporCiudad Servlet",urlPatterns = {"/listaToursporciudad"})
-public class TourServlet extends HttpServlet {
+public class TourporCiudadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TourDao tourDao = new TourDao();
-        ArrayList<TPC> listaToursporCiudad = tourDao.obtenerListaToursporciudad();
+        ArrayList<Tour> listaToursporCiudad = tourDao.obtenerListaTours();
 
         request.setAttribute("listaToursporciudad",listaToursporCiudad);
 

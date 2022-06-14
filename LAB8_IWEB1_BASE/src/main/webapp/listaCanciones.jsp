@@ -30,7 +30,7 @@
                         </td>
                         <td><%=cancion.getNombreCancion()%>
                         </td>
-                        <td><%=cancion.getIdCancion()%>
+                        <td><%=cancion.getNombreBanda()%>
                         </td>
 
                     </tr>

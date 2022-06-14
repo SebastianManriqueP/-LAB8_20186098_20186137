@@ -1,9 +1,7 @@
 package Servlets;
 
 import Beans.Cancion;
-import Beans.Tour;
-import Daos.CancionRecomenDao;
-import Daos.TourDao;
+import Daos.CancionDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +20,7 @@ public class CancionesServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        CancionRecomenDao cancionRDao = new CancionRecomenDao();
+        CancionDao cancionRDao = new CancionDao();
         ArrayList<Cancion> listaCanciones = cancionRDao.obtenerCancionesRecom();
 
         request.setAttribute("listaCanciones",listaCanciones);

@@ -10,12 +10,14 @@ public class ArtistaDao {
     private static String url = "jdbc:mysql://localhost:3306/lab6sw1";
 
     public ArrayList<Artista> obtenerartistas() {
-        ArrayList<Cancion> listaArtistas = new ArrayList<>();
+        ArrayList<Artista> listaArtistas = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        return listaArtistas;
+    }
 
 }
