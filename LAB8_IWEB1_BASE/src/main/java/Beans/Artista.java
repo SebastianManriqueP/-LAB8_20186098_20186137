@@ -1,5 +1,5 @@
 package Beans;
-
+/* comentario prueba* /
 public class Artista {
     private int idArtista;
     private String nombre_artista;
