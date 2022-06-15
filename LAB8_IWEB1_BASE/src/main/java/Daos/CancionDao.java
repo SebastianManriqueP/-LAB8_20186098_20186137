@@ -100,5 +100,26 @@ public class CancionDao {
             throw new RuntimeException(e);
         }
     }
+    public ArrayList<Cancion> obtenerlistacanciones(String banda) {
+        ArrayList<Cancion> listaCancionR = new ArrayList<>();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        String sql = " SELECT * FROM cancion where banda= "?" ";
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sql);) {
+            pstmt.setString(1, banda);
+            pstmt.executeQuery();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return listaCancionR;
+    }
 
 }
