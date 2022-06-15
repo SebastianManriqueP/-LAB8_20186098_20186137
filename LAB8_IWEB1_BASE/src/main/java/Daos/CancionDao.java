@@ -20,10 +20,10 @@ public class CancionDao {
 
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT C.idcancion, C.nombre_cancion, C.banda FROM reproduccion R, cancion C where C.idcancion = R.cancion_idcancion group by R.cancion_idcancion having count(*)>2 order by count(*) desc");) {
+             ResultSet rs = stmt.executeQuery("SELECT C.idcancion, C.nombre_cancion, C.banda, C.Favorito FROM reproduccion R, cancion C where C.idcancion = R.cancion_idcancion group by R.cancion_idcancion having count(*)>2 order by count(*) desc");) {
 
             while (rs.next()) {
-                Cancion cancion = new Cancion(rs.getInt(1),rs.getString(2),rs.getString(3));
+                Cancion cancion = new Cancion(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
                 listaCancionR.add(cancion);
             }
         } catch (SQLException e) {
@@ -48,7 +48,7 @@ public class CancionDao {
              ResultSet rs = stmt.executeQuery("SELECT * FROM cancion");) {
 
             while (rs.next()) {
-                Cancion cancion = new Cancion(rs.getInt(1),rs.getString(2),rs.getString(3));
+                Cancion cancion = new Cancion(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
                 listaCancion.add(cancion);
             }
         } catch (SQLException e) {
@@ -57,6 +57,48 @@ public class CancionDao {
 
 
         return listaCancion;
+    }
+
+    public void agregarFav(String id){
+        int idInt = Integer.parseInt(id);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        String sql = "UPDATE cancion SET Favorito = 1 WHERE idcancion = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sql);) {
+
+            pstmt.setInt(1,idInt);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void borrarFav(String id){
+        int idInt = Integer.parseInt(id);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        String sql = "UPDATE cancion SET Favorito = 0 WHERE idcancion = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sql);) {
+
+            pstmt.setInt(1,idInt);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

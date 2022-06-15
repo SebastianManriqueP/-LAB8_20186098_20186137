@@ -4,11 +4,13 @@ public class Cancion {
     private int idCancion;
     private String nombreCancion;
     private String nombreBanda;
+    private int bFavorito;
 
-    public Cancion(int idCancion, String nombreCancion, String nombreBanda) {
+    public Cancion(int idCancion, String nombreCancion, String nombreBanda, int bFavorito) {
         this.idCancion = idCancion;
         this.nombreCancion = nombreCancion;
         this.nombreBanda = nombreBanda;
+        this.bFavorito = bFavorito;
     }
 
 
@@ -34,5 +36,13 @@ public class Cancion {
 
     public void setNombreBanda(String nombreBanda) {
         this.nombreBanda = nombreBanda;
+    }
+
+    public int getbFavorito() {
+        return bFavorito;
+    }
+
+    public void setbFavorito(int bFavorito) {
+        this.bFavorito = bFavorito;
     }
 }
