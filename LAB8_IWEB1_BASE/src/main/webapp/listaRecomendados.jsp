@@ -34,7 +34,7 @@
                 </td>
                 <td><%=cancion.getNombreBanda()%>
                 </td>
-                <td><button type="button" class="btn btn-success">Más de la banda</button>
+                <td><a href="<%=request.getContextPath()%>/listaCanciones?a=listarBanda&id=<%=cancion.getNombreBanda()%>"><button type="button" class="btn btn-success">Más de la banda</button></a>
                 </td>
             </tr>
             <%
