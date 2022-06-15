@@ -37,6 +37,13 @@ public class ListaCancionesServlet extends HttpServlet {
                 cancionDao.borrarFav(cancionId);
                 response.sendRedirect(request.getContextPath() + "/listaCanciones");
             }
+            case"listarBanda"->{
+                String bandaId=request.getParameter("id");
+                ArrayList<Cancion> listaCanciones = cancionDao.obtenerlistacanciones(bandaId);
+                request.setAttribute("listaCancion",listaCanciones);
+                RequestDispatcher view =request.getRequestDispatcher("listaCanciones.jsp");
+                view.forward(request,response);
+            }
         }
 
     }
